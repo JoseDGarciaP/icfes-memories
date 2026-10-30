@@ -1,0 +1,99 @@
+/*
+ * Paleta de colores de la app para modo claro y oscuro.
+ * Tailwind lee estas variables desde global.css (bloque @theme), así que en
+ * los componentes se usan como clases: bg-fondo, bg-superficie, text-texto,
+ * text-texto-suave, border-borde, bg-primario, text-area-matematicas, etc.
+ *
+ * Tema activo:
+ *   - sin data-tema       -> sigue al sistema (prefers-color-scheme)
+ *   - data-tema="claro"   -> siempre claro
+ *   - data-tema="oscuro"  -> siempre oscuro
+ */
+:root {
+  color-scheme: light;
+
+  --fondo: #f6f7fb;
+  --superficie: #ffffff;
+  --superficie-2: #eef1f8;
+  --borde: #dde2ee;
+  --texto: #161a26;
+  --texto-suave: #586079;
+
+  --primario: #1f4fd1;
+  --primario-hover: #1a43b3;
+  --sobre-primario: #ffffff;
+  --acento: #f5b81c;
+
+  --correcto: #1a8a4a;
+  --correcto-fondo: #e3f5ea;
+  --incorrecto: #c2352b;
+  --incorrecto-fondo: #fbe6e4;
+
+  --area-naturales: #1a8a4a;
+  --area-lectura: #8b3fc9;
+  --area-matematicas: #1f4fd1;
+  --area-sociales: #c26a14;
+  --area-ingles: #c2352b;
+
+  --sombra: 0 1px 2px rgb(16 24 40 / 0.06), 0 2px 8px rgb(16 24 40 / 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema='claro']) {
+    color-scheme: dark;
+
+    --fondo: #0f1320;
+    --superficie: #171c2c;
+    --superficie-2: #20263a;
+    --borde: #2c3450;
+    --texto: #e8ebf4;
+    --texto-suave: #9aa3bd;
+
+    --primario: #6d8ff5;
+    --primario-hover: #89a5f8;
+    --sobre-primario: #0f1320;
+    --acento: #f7c84a;
+
+    --correcto: #4cc985;
+    --correcto-fondo: #143a26;
+    --incorrecto: #f07a70;
+    --incorrecto-fondo: #44201d;
+
+    --area-naturales: #4cc985;
+    --area-lectura: #b98af0;
+    --area-matematicas: #6d8ff5;
+    --area-sociales: #eba25a;
+    --area-ingles: #f07a70;
+
+    --sombra: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 12px rgb(0 0 0 / 0.3);
+  }
+}
+
+:root[data-tema='oscuro'] {
+  color-scheme: dark;
+
+  --fondo: #0f1320;
+  --superficie: #171c2c;
+  --superficie-2: #20263a;
+  --borde: #2c3450;
+  --texto: #e8ebf4;
+  --texto-suave: #9aa3bd;
+
+  --primario: #6d8ff5;
+  --primario-hover: #89a5f8;
+  --sobre-primario: #0f1320;
+  --acento: #f7c84a;
+
+  --correcto: #4cc985;
+  --correcto-fondo: #143a26;
+  --incorrecto: #f07a70;
+  --incorrecto-fondo: #44201d;
+
+  --area-naturales: #4cc985;
+  --area-lectura: #b98af0;
+  --area-matematicas: #6d8ff5;
+  --area-sociales: #eba25a;
+  --area-ingles: #f07a70;
+
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 12px rgb(0 0 0 / 0.3);
+}

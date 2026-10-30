@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+@import './tema.css';
+
+/*
+ * Variante dark: para los casos puntuales que necesiten algo distinto en
+ * oscuro (dark:...). Respeta el selector de tema: aplica si el usuario eligió
+ * "oscuro", o si eligió "sistema" y el sistema está en oscuro.
+ * La mayoría de componentes NO la necesitan: los colores de abajo ya cambian solos.
+ */
+@custom-variant dark {
+  &:where([data-tema='oscuro'], [data-tema='oscuro'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-tema='claro']), :root:not([data-tema='claro']) *) {
+      @slot;
+    }
+  }
+}
+
+/* Colores del tema disponibles como clases de Tailwind */
+@theme inline {
+  --color-fondo: var(--fondo);
+  --color-superficie: var(--superficie);
+  --color-superficie-2: var(--superficie-2);
+  --color-borde: var(--borde);
+  --color-texto: var(--texto);
+  --color-texto-suave: var(--texto-suave);
+
+  --color-primario: var(--primario);
+  --color-primario-hover: var(--primario-hover);
+  --color-sobre-primario: var(--sobre-primario);
+  --color-acento: var(--acento);
+
+  --color-correcto: var(--correcto);
+  --color-correcto-fondo: var(--correcto-fondo);
+  --color-incorrecto: var(--incorrecto);
+  --color-incorrecto-fondo: var(--incorrecto-fondo);
+
+  --color-area-naturales: var(--area-naturales);
+  --color-area-lectura: var(--area-lectura);
+  --color-area-matematicas: var(--area-matematicas);
+  --color-area-sociales: var(--area-sociales);
+  --color-area-ingles: var(--area-ingles);
+
+  --shadow-tarjeta: var(--sombra);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-fondo text-texto font-sans antialiased;
+    line-height: 1.55;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-primario;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+    }
+  }
+}
